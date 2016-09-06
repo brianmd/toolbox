@@ -1,1 +1,4 @@
 install/installed_apps
+.#*
+.envrc
+
