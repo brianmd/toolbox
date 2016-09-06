@@ -4,10 +4,7 @@ apt-get install -y \
   autotools-dev \
   build-essential \
   curl \
-  exim4 \
   exuberant-ctags \
-  fish \
-  gdebi \
   git \
   heirloom-mailx \
   htop \
