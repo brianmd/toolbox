@@ -1,0 +1,6 @@
+#!/bin/sh
+# Run emacs in batch to download and pre-process files
+emacs -nw -batch -u "$UNAME" -q -kill
+emacs -nw -batch -u "$UNAME" -q -kill
+sed -i "s/dotspacemacs-install-packages 'all/dotspacemacs-install-packages 'used-but-keep-unused/g" $HOME/.spacemacs
+emacs -nw -batch -u "$UNAME" -q -kill

@@ -1,0 +1,3 @@
+#!/bin/sh
+(cd $HOMEDIR/.config/dotfiles && make relink)
+git clone https://github.com/syl20bnr/spacemacs $HOMEDIR/.emacs.d

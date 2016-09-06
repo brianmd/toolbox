@@ -1,0 +1,3 @@
+#!/bin/bash
+rm -f $HOMEDIR/.tmux.conf
+ln -s $HOMEDIR/.config/dotfiles/etc/tmux.conf $HOMEDIR/.tmux.conf

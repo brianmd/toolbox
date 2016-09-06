@@ -1,0 +1,6 @@
+#!/bin/bash
+apt-get install -y openjdk-8*
+# # Piping from echo because of warning msg from oracle.
+# echo | add-apt-repository ppa:webupd8team/java
+# apt-get update
+# apt-get install oracle-java8-installer

@@ -1,0 +1,46 @@
+#!/bin/bash
+
+export UNAME=root
+export HOMEDIR=/root
+
+apps=${@:-"apt-update utils zsh dotfiles tmux direnv firewall gcloud user-create spacemacs spacemacs-setup apt-cleanup"}
+
+# Keep track of installed apps so can update them later.
+function add_app {
+  INSTALLED_APPS=" "
+  installed_apps_file=installed_apps
+  [[ -f $installed_apps_file ]] && source $installed_apps_file
+  # echo "currently install apps:$INSTALLED_APPS"
+  if [[ $INSTALLED_APPS != *" $app "* ]]; then
+    INSTALLED_APPS="$INSTALLED_APPS$app "
+  fi
+  echo "INSTALLED_APPS=\"$INSTALLED_APPS\"" > $installed_apps_file
+}
+
+function execute {
+  echo "                                       trying $1"
+  [[ -f $1 ]] && \
+    echo -e "\n-------------------------------------- executing $1" && \
+    source ./$1
+}
+
+echo "installing $apps"
+echo
+
+export DEBIAN_FRONTEND=noninteractive 
+execute install-pre
+
+for app in $apps; do
+  execute "$app-pre"
+done
+
+for app in $apps; do
+  execute "$app"
+  add_app $app
+done
+
+for app in $apps; do
+  execute "$app-post"
+done
+
+execute install-post

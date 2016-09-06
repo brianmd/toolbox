@@ -1,0 +1,2 @@
+#!/bin/bash
+echo | vim --not-a-term -c VundleUpdate -c quitall

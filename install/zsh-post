@@ -1,0 +1,5 @@
+#!/bin/bash
+rm -f $HOMEDIR/.zshrc   # if link
+rm -rf $HOMEDIR/.zshrc  # if directory
+ln -s $HOMEDIR/.config/dotfiles/etc/zshrc $HOMEDIR/.zshrc
+export SHELL=/usr/bin/zsh

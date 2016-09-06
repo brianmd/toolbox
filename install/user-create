@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "missing MNAME environment variable."
+exit 1
+adduser ${MNAME}
+$(MAKE) root_cpdot

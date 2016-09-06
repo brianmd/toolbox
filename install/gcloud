@@ -1,0 +1,14 @@
+#!/bin/sh
+# Import the Google Cloud public key
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+# Create an environment variable for the correct distribution
+CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+
+# Add the Cloud SDK distribution URI as a package source
+apt-get install --reinstall base-files lsb-release lsb-base
+
+# echo "cloud-sdk-`lsb_release -c -s` main"
+# echo "cloud-sdk-$(lsb_release -c -s) main"
+# echo "deb http://packages.cloud.google.com/apt cloud-sdk-`lsb_release -c -s` main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
+apt-get install -y google-cloud-sdk

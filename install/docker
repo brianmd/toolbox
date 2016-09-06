@@ -1,0 +1,7 @@
+#!/bin/bash
+apt-get install -y docker docker-compose
+wget https://github.com/docker/machine/releases/download/v0.6.0/docker-machine-$(uname -s)-$(uname -m)
+mv docker-machine-Linux-x86_64 docker-machine
+chmod +x docker-machine
+mv docker-machine /usr/local/bin
+

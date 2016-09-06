@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "in pre-utils"
+PRE_UTILS=yes

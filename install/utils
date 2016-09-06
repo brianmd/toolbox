@@ -1,0 +1,29 @@
+#!/bin/sh
+apt-get install -y \
+  autossh \
+  autotools-dev \
+  build-essential \
+  curl \
+  exim4 \
+  exuberant-ctags \
+  fish \
+  gdebi \
+  git \
+  heirloom-mailx \
+  htop \
+  ispell \
+  jq \
+  keychain \
+  module-init-tools \
+  mosh \
+  ntpdate \
+  openssh-server \
+  python-software-properties \
+  silversearcher-ag \
+  software-properties-common \
+  sysstat \
+  tree \
+  unzip \
+  wget \
+  zlib1g-dev
+# httpie

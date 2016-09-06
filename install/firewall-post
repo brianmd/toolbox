@@ -1,0 +1,6 @@
+#!/bin/sh
+ufw allow ssh
+ufw allow 60000:60100/udp  # mosh
+ufw allow http
+ufw allow https
+ufw enable

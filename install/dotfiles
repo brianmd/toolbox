@@ -1,0 +1,4 @@
+# #!/bin/bash
+# mkdir -p /home/$UNAME/.config
+# git clone https://github.com/brianmd/dotfiles $HOMEDIR/.config/dotfiles
+# git clone https://github.com/brianmd/binfiles $HOMEDIR/.config/binfiles

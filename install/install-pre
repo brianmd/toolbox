@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+
+echo ensure GITEMAIL and GITNAME exist
+
+
+
+echo "installing ..."

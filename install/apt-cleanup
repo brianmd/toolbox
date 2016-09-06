@@ -1,0 +1,5 @@
+#!/bin/sh
+apt-get clean -y
+rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* /var/cache/apt/*
+apt-get clean -y
+
