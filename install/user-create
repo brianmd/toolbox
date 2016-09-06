@@ -1,5 +1,12 @@
 #!/bin/bash
-echo "missing MNAME environment variable."
-exit 1
-adduser ${MNAME}
-$(MAKE) root_cpdot
+USERNAME=${USERNAME:-clojure}
+pw
+uid
+gid
+
+useradd -m $USERNAME -p $PW -s /bin/zsh
+usermod -aG docker $USERNAME
+adduser $USERNAME sudo
+echo "sudo ALL=(ALL) ALL" | tee -a /etc/sudoers
+
+install dotfiles, etc
