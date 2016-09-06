@@ -20,7 +20,13 @@ to enable updating all apps later.
 
 # Installation
 
-This repository isn't complete yet, so manual steps are still required.
+```sh
+git clone git@github.com:brianmd/toolbox.github
+cd toolbox/install
+./install apt-update utils zsh dotfiles spacemacs
+```
+
+This repository is still a work in progress, so manual steps are required.
 
 For now, change to the install directory, and then run:
 ```sh
