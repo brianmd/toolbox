@@ -21,15 +21,11 @@ to enable updating all apps later.
 # Installation
 
 ```sh
-git clone git@github.com:brianmd/toolbox.github
+git clone git@github.com:brianmd/toolbox.git
 cd toolbox/install
-./install apt-update utils zsh dotfiles spacemacs
+./install apt-update utils zsh tmux dotfiles spacemacs docker firewall
+reboot
 ```
 
-This repository is still a work in progress, so manual steps are required.
-
-For now, change to the install directory, and then run:
-```sh
-./install app1 app2 ...
-```
+Note: this repository is still a work in progress, so manual steps are required.
 
