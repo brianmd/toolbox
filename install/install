@@ -6,6 +6,17 @@ export HOMEDIR=/root
 apps=${@:-"apt-update utils zsh dotfiles tmux direnv firewall gcloud user-create spacemacs spacemacs-setup apt-cleanup"}
 
 # Keep track of installed apps so can update them later.
+function add_pre_app {
+    INSTALLED_PRE_APPS=" "
+    installed_pre_apps_file=installed_pre_apps
+    [[ -f $installed_pre_apps_file ]] && source $installed_pre_apps_file
+    # echo "currently install pre_apps:$INSTALLED_PRE_APPS"
+    if [[ $INSTALLED_PRE_APPS != *" $app "* ]]; then
+        INSTALLED_PRE_APPS="$INSTALLED_PRE_APPS$app "
+    fi
+    echo "INSTALLED_PRE_APPS=\"$INSTALLED_PRE_APPS\"" > $installed_pre_apps_file
+}
+
 function add_app {
   INSTALLED_APPS=" "
   installed_apps_file=installed_apps
@@ -32,6 +43,7 @@ execute install-pre
 
 for app in $apps; do
   execute "$app-pre"
+  add_pre_app $app
 done
 
 for app in $apps; do
