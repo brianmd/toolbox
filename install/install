@@ -43,7 +43,7 @@ execute install-pre
 
 for app in $apps; do
   execute "$app-pre" || true
-  add_pre_app $app
+  # add_pre_app $app
 done
 
 for app in $apps; do

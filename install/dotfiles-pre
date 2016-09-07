@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p /home/$UNAME/.config
+mkdir -p $HOMEDIR/.config
 git clone https://github.com/brianmd/dotfiles $HOMEDIR/.config/dotfiles || true
 git clone https://github.com/brianmd/binfiles $HOMEDIR/.config/binfiles || true
 (cd $HOMEDIR/.config/dotfiles && make relink)
