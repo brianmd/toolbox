@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+apt-get install -y ufw
 ufw allow ssh
 ufw allow 60000:60100/udp  # mosh
 ufw allow http
