@@ -42,17 +42,17 @@ export DEBIAN_FRONTEND=noninteractive
 execute install-pre
 
 for app in $apps; do
-  execute "$app-pre"
+  execute "$app-pre" || true
   add_pre_app $app
 done
 
 for app in $apps; do
-  execute "$app"
+  execute "$app" || true
   add_app $app
 done
 
 for app in $apps; do
-  execute "$app-post"
+  execute "$app-post" || true
 done
 
 execute install-post
