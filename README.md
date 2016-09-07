@@ -1,22 +1,26 @@
 # Intention
 
-Docker toolbox for coreos. Also app installations for linux systems.
+Goal #1: provision a cloud computer as a complete development server within fifteen minutes.
+
+Goal #2: build docker toolbox for coreos.
 
 Because this is intended for docker, this is lighter weight than ansible,
-chef, and puppet. (Read, "not full-featured" :o)
+chef, and puppet. (translation, "not full-featured" :o)
 
 # Organization
 
-Example apps are firewall, java, and spacemacs.
+Example installation: ./install firewall java spacemacs
 
 An app may be broken into four files:
-* <appname>-pre, typically for prerequisites of the app.
-* <appname>, typically for installation of the app.
-* <appname>-post, typically for setup.
-* <appname>-update, for updating after already being installed.
+* [appname]-pre, typically for prerequisites of the app.
+* [appname], typically for installation of the app.
+* [appname]-post, typically for setup.
+* [appname]-update, for updating after already being installed.
 
-As apps are installed, thay are added to file **installed_apps**,
-to enable updating all apps later.
+All pre files are called, then all plain files, and lastly all post files.
+
+As apps are installed thay are added to file **installed_apps**.
+Tracking which apps are installed enables updating them later.
 
 # Installation
 
