@@ -1,12 +1,25 @@
 #!/bin/bash
-USERNAME=${USERNAME:-clojure}
-pw
-uid
-gid
+USERNAME=${USERNAME:-toolbox}
+USERID=1000
+PW=${USERNAME}pw
+USERDIR=/home/${USERNAME}
 
-useradd -m $USERNAME -p $PW -s /bin/zsh
-usermod -aG docker $USERNAME
+addgroup -gid $USERID $USERNAME || true
+# adduser --disabled-password --gecos '' -u $USERID --gid $USERID $USERNAME ;\
+useradd -m -u $USERID --gid $USERID -p $PW $USERNAME -s /bin/zsh || true
+usermod -aG docker $USERNAME || true
 adduser $USERNAME sudo
-echo "sudo ALL=(ALL) ALL" | tee -a /etc/sudoers
+echo "$USERNAME ALL=(ALL) ALL" | tee -a /etc/sudoers
 
-install dotfiles, etc
+cp -r /root/.ssh $USERDIR/.ssh
+# sudo -u $USERNAME mkdir -p $USERDIR/.ssh
+# if [[ -f authorized_keys ]]; then
+     sudo -u $USERNAME cp authorized_keys $USERNAME/.ssh/
+# fi
+# if [[ -f ~/.ssh/$GIT_KEY ]]; then
+     # cp ~/.ssh/$GIT_KEY $USERNAME/.ssh/
+# fi
+# chmod -R 700 $USERDIR/.ssh
+chown -R $USERNAME:$USERNAME $USERDIR/.ssh
+
+sudo -u $USERNAME -i -- sh -lc '(mkdir -p ~/.config && cd ~/.config && git clone https://github.com/brianmd/dotfiles.git && cd dotfiles && ./prep-user-tools.sh)'

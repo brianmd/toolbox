@@ -1,2 +1,9 @@
-#!/bin/bash
-apt-get install -y maven maven*
+wget "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz"
+tar xzf /tmp/apache-maven-$MAVEN_VERSION-bin.tar.gz -C /opt/
+ln -s /opt/apache-maven-$MAVEN_VERSION /opt/maven
+ln -s /opt/maven/bin/mvn /usr/local/bin
+rm -f /tmp/apache-maven-$MAVEN_VERSION.tar.gz
+
+MAVEN_HOME=/opt/maven
+
+# echo "87e5cc81bc4ab9b83986b3e77e6b3095 /tmp/apache-maven-$MAVEN_VERSION.tar.gz" | md5sum -c

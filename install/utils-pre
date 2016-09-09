@@ -6,6 +6,7 @@ apt-get install -y \
   curl \
   exuberant-ctags \
   git \
+  golang \
   heirloom-mailx \
   htop \
   ispell \
