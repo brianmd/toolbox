@@ -6,7 +6,7 @@ echo "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release) main" | sudo 
 apt-get update
 apt-cache policy docker-engine
 apt-get install -y linux-image-extra-$(uname -r)
-apt-get install -y docker-engine docker-compose
+apt-get install -y docker-engine docker-compose systemd-docker
 systemctl start docker
 systemctl enable docker
 

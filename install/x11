@@ -1,0 +1,18 @@
+#!/bin/bash
+# Install packages required by Browsers to run on Xvfb
+RUN apt-get install -y x11-xkb-utils xfonts-100dpi xfonts-75dpi
+RUN apt-get install -y xfonts-scalable xserver-xorg-core
+RUN apt-get install -y dbus-x1
+# Install package that prevents Phantomjs from failing silently
+RUN apt-get install -y libfontconfig1-dev
+# Install browsers
+RUN apt-get install -y chromium-browser firefox
+# Make sure xvfb is executable and own by root,
+# and the service definitions are updated
+RUN chown root:root /etc/init.d/xvfb
+RUN chmod a+x /etc/init.d/xvfb
+RUN update-rc.d  /etc/init.d/xvfb defaults
+Install Xvfb to run GUI applications on a virtual display
+RUN apt-get install -y xvfb
+# Download Xvfb config file for running GUI apps on a virtual :10 display
+RUN wget https://gist.githubusercontent.com/felippenardi/0f22af
