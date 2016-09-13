@@ -1,4 +1,7 @@
 #!/bin/bash
+# Install firewall as firewall-pre so it is enabled before adding other services.
+# If installed as firewall or firewall-post, service may be open to the interwebs
+# prior to being secured.
 apt-get install -y ufw
 ufw allow ssh
 ufw allow 60000:60100/udp  # mosh

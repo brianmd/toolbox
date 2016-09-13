@@ -3,47 +3,24 @@
 export UNAME=root
 export HOMEDIR=/root
 
-apps=${@:-"apt-update utils zsh dotfiles tmux direnv firewall gcloud user-create spacemacs spacemacs-setup apt-cleanup"}
-
-# Keep track of installed apps so can update them later.
-function add_pre_app {
-    INSTALLED_PRE_APPS=" "
-    installed_pre_apps_file=installed_pre_apps
-    [[ -f $installed_pre_apps_file ]] && source $installed_pre_apps_file
-    # echo "currently install pre_apps:$INSTALLED_PRE_APPS"
-    if [[ $INSTALLED_PRE_APPS != *" $app "* ]]; then
-        INSTALLED_PRE_APPS="$INSTALLED_PRE_APPS$app "
-    fi
-    echo "INSTALLED_PRE_APPS=\"$INSTALLED_PRE_APPS\"" > $installed_pre_apps_file
-}
-
-function add_app {
-  INSTALLED_APPS=" "
-  installed_apps_file=installed_apps
-  [[ -f $installed_apps_file ]] && source $installed_apps_file
-  # echo "currently install apps:$INSTALLED_APPS"
-  if [[ $INSTALLED_APPS != *" $app "* ]]; then
-    INSTALLED_APPS="$INSTALLED_APPS$app "
-  fi
-  echo "INSTALLED_APPS=\"$INSTALLED_APPS\"" > $installed_apps_file
-}
-
-function execute {
-  echo "                                       trying $1"
-  [[ -f $1 ]] && \
-    echo -e "\n-------------------------------------- executing $1" && \
-    source ./$1
-}
+apps=${@:-"apt-update apt-upgrade utils zsh dotfiles tmux direnv firewall gcloud user-create spacemacs spacemacs-setup apt-cleanup"}
 
 echo "installing $apps"
 echo
+
+source helpers/functions
+export -f add_attempted
+export -f add_executed
+export -f has_executed
+export -f add_app
+export -f executed
+export -f ensure_executed
 
 export DEBIAN_FRONTEND=noninteractive 
 execute install-pre
 
 for app in $apps; do
   execute "$app-pre" || true
-  # add_pre_app $app
 done
 
 for app in $apps; do

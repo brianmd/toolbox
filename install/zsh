@@ -2,5 +2,5 @@
 mkdir -p $HOMEDIR/.config/ohmy
 curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o $HOMEDIR/.config/ohmy/install.sh
 chmod a+x $HOMEDIR/.config/ohmy/install.sh
-cd $HOMEDIR/.config/ohmy && ./install.sh
+(cd $HOMEDIR/.config/ohmy && ./install.sh)
 # chsh -s /usr/bin/zsh

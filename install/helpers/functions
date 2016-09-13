@@ -1,0 +1,46 @@
+#!/bin/bash
+
+function add_attempted {
+    echo "`date` $1" >> attempted_apps
+}
+
+function add_executed {
+  echo "`date` $1" >> executed_apps
+}
+
+function has_executed {
+    if grep --quiet " $1\$" executed_apps; then
+        echo true
+    else
+        echo false
+    fi
+}
+
+# Keep track of installed apps so can update them later.
+# Not added during pre or post, only middle call.
+function add_app {
+  INSTALLED_APPS=" "
+  installed_apps_file=installed_apps
+  [[ -f $installed_apps_file ]] && source $installed_apps_file
+  # echo "currently install apps:$INSTALLED_APPS"
+  if [[ $INSTALLED_APPS != *" $app "* ]]; then
+    INSTALLED_APPS="${INSTALLED_APPS}$app "
+    echo "INSTALLED_APPS=\"$INSTALLED_APPS\"" > $installed_apps_file
+  fi
+}
+
+function execute {
+  local app=$1
+  echo "                                       trying $app"
+  [[ -f $app ]] && \
+    add_attempted $app && \
+    echo -e "\n-------------------------------------- executing $app" && \
+    source ./$app && \
+    add_executed $app
+}
+
+function ensure_executed {
+  if [[ $(has_executed $1) == false ]]; then
+    execute $1
+  fi
+}
