@@ -1,9 +1,15 @@
-wget "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz"
-tar xzf /tmp/apache-maven-$MAVEN_VERSION-bin.tar.gz -C /opt/
+export MAVEN_VERSION=3.3.9
+export MAVEN_HOME=/opt/maven
+export MAVEN_FILENAME=/tmp/apache-maven-$MAVEN_VERSION-bin.tar.gz
+wget -o /tmp/apache-m "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz"
+tar xzf $MAVEN_FILENAME -C /opt/
+rm -f /opt/maven
+rm -f /usr/local/bin/maven
 ln -s /opt/apache-maven-$MAVEN_VERSION /opt/maven
+# next line seems unnecessary ...
 ln -s /opt/maven/bin/mvn /usr/local/bin
-rm -f /tmp/apache-maven-$MAVEN_VERSION.tar.gz
+rm -f $MAVEN_FILENAME
 
 MAVEN_HOME=/opt/maven
 
-# echo "87e5cc81bc4ab9b83986b3e77e6b3095 /tmp/apache-maven-$MAVEN_VERSION.tar.gz" | md5sum -c
+# echo "87e5cc81bc4ab9b83986b3e77e6b3095 $MAVEN_FILENAME | md5sum -c

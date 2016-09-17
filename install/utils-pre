@@ -20,6 +20,7 @@ apt-get install -y \
   silversearcher-ag \
   software-properties-common \
   sysstat \
+  tmux \
   tree \
   unzip \
   wget \
