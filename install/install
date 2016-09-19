@@ -13,7 +13,7 @@ export -f add_attempted
 export -f add_executed
 export -f has_executed
 export -f add_app
-export -f executed
+export -f add_executed
 export -f ensure_executed
 
 export DEBIAN_FRONTEND=noninteractive 
