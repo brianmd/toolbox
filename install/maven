@@ -1,14 +1,16 @@
 export MAVEN_VERSION=3.3.9
 export MAVEN_HOME=/opt/maven
-export MAVEN_FILENAME=/tmp/apache-maven-$MAVEN_VERSION-bin.tar.gz
-wget -o /tmp/apache-m "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz"
-tar xzf $MAVEN_FILENAME -C /opt/
+MAVEN_FILENAME=apache-maven-$MAVEN_VERSION-bin.tar.gz
+MAVEN_PATH="/tmp/$MAVEN_FILENAME"
+wget -o /tmp/$MAVEN_PATH "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/$MAVEN_FILENAME"
+tar xzf $MAVEN_PATH -C /opt/
+rm -f $MAVEN_PATH
+
 rm -f /opt/maven
-rm -f /usr/local/bin/maven
 ln -s /opt/apache-maven-$MAVEN_VERSION /opt/maven
-# next line seems unnecessary ...
+# next commands seems unnecessary ...
+rm -f /usr/local/bin/maven
 ln -s /opt/maven/bin/mvn /usr/local/bin
-rm -f $MAVEN_FILENAME
 
 MAVEN_HOME=/opt/maven
 
