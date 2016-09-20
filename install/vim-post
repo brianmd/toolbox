@@ -5,4 +5,4 @@ rm -rf $HOMEDIR/.vim
 ln -s ${HOMEDIR}/.config/dotfiles/vim $HOMEDIR/.vim
 ln -s ${HOMEDIR}/.config/dotfiles/vim/vimrc $HOMEDIR/.vimrc
 
-echo | vim --not-a-term -c VundleInstall -c quitall
+echo | vim --not-a-term +PlugInstall -c quitall
