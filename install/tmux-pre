@@ -1,3 +1,4 @@
 #!/bin/bash
+rm -rf $HOMEDIR/.tmux $HOMEDIR/.tmux.conf
 git clone git://github.com/nviennot/tmux-config.git $HOMEDIR/.tmux || true
 (cd $HOMEDIR/.tmux && make install) || true
