@@ -3,11 +3,14 @@ export MAVEN_HOME=/opt/maven
 MAVEN_FILENAME=apache-maven-$MAVEN_VERSION-bin.tar.gz
 MAVEN_PATH="/tmp/$MAVEN_FILENAME"
 MAVEN_DEST=/opt/apache-maven-$MAVEN_VERSION
-#wget -o $MAVEN_PATH "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/$MAVEN_FILENAME"
+echo "downloading $MAVEN_FILENAME"
+wget -o $MAVEN_PATH "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/$MAVEN_FILENAME"
+echo "516923b3955b6035ba6b0a5b031fbd8b" $MAVEN_PATH | md5sum -c
 
 rm -rf $MAVEN_DEST
+echo tar xzf $MAVEN_PATH -C /opt/
 tar xzf $MAVEN_PATH -C /opt/
-# rm -f $MAVEN_PATH
+#rm -f $MAVEN_PATH
 
 rm -f /opt/maven
 ln -s $MAVEN_DEST /opt/maven
@@ -17,4 +20,3 @@ ln -s /opt/maven/bin/mvn /usr/local/bin
 
 MAVEN_HOME=/opt/maven
 
-echo "516923b3955b6035ba6b0a5b031fbd8b" $MAVEN_PATH | md5sum -c
