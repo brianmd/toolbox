@@ -1,8 +1,10 @@
 #!/bin/bash
 # Re-link
-rm -f $HOMEDIR/.vim $HOMEDIR/.vimrc
-rm -rf $HOMEDIR/.vim
+rm -f ${HOMEDIR}/.vim $HOMEDIR/.vimrc
+rm -rf ${HOMEDIR}/.vim
 ln -s ${HOMEDIR}/.config/dotfiles/vim $HOMEDIR/.vim
 ln -s ${HOMEDIR}/.config/dotfiles/vim/vimrc $HOMEDIR/.vimrc
+touch ${HOMEDIR}/.config/dotfiles/vim/vimrc.mine
+mkdir -f ${HOMEDIR}/.config/dotfiles/vim/swap
 
 echo | vim --not-a-term +PlugInstall -c quitall
