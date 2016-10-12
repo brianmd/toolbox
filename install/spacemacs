@@ -1,3 +1,6 @@
 #!/bin/sh
 (cd $HOMEDIR/.config/dotfiles && make relink)
+rm -rf $HOMEDIR/.emacs.d
 git clone https://github.com/syl20bnr/spacemacs $HOMEDIR/.emacs.d
+chown -R bmd:bmd $HOMEDIR/.emacs.d
+

@@ -19,13 +19,24 @@ function has_executed {
 # Keep track of installed apps so can update them later.
 # Not added during pre or post, only middle call.
 function add_app {
-  INSTALLED_APPS=" "
-  installed_apps_file=installed_apps
-  [[ -f $installed_apps_file ]] && source $installed_apps_file
+    INSTALLED_APPS=" "
+    installed_apps_file=installed_apps
+    [[ -f $installed_apps_file ]] && source $installed_apps_file
+    # echo "currently install apps:$INSTALLED_APPS"
+    if [[ $INSTALLED_APPS != *" $app "* ]]; then
+        INSTALLED_APPS="${INSTALLED_APPS}$app "
+        echo "INSTALLED_APPS=\"$INSTALLED_APPS\"" > $installed_apps_file
+    fi
+}
+
+function add_user_app {
+  INSTALLED_USER_APPS=" "
+  installed_apps_file=installed_user_apps
+  [[ -f $installed_user_apps_file ]] && source $installed_user_apps_file
   # echo "currently install apps:$INSTALLED_APPS"
-  if [[ $INSTALLED_APPS != *" $app "* ]]; then
-    INSTALLED_APPS="${INSTALLED_APPS}$app "
-    echo "INSTALLED_APPS=\"$INSTALLED_APPS\"" > $installed_apps_file
+  if [[ $INSTALLED_USER_APPS != *" $app "* ]]; then
+    INSTALLED_USER_APPS="${INSTALLED_USER_APPS}$app "
+    echo "INSTALLED_USER_APPS=\"$INSTALLED_USER_APPS\"" > $installed_user_apps_file
   fi
 }
 
@@ -43,4 +54,14 @@ function ensure_executed {
   if [[ $(has_executed $1) == false ]]; then
     execute $1
   fi
+}
+
+function user_execute {
+  local app="user-$1"
+  echo "                                       trying $app"
+  [[ -f $app ]] && \
+    add_attempted $app && \
+    echo -e "\n-------------------------------------- executing $app" && \
+    source ./$app && \
+    add_executed $app
 }

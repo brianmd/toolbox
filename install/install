@@ -1,7 +1,8 @@
 #!/bin/bash
 
 export UNAME=root
-export HOMEDIR=/root
+#export HOMEDIR=/root
+export HOMEDIR=$HOME
 
 apps=${@:-"apt-update apt-upgrade utils zsh dotfiles tmux direnv firewall gcloud user-create spacemacs spacemacs-setup apt-cleanup"}
 
@@ -9,14 +10,18 @@ echo "installing $apps"
 echo
 
 source helpers/functions
+
 export -f add_attempted
 export -f add_executed
 export -f has_executed
 export -f add_app
+export -f add_user_app
 export -f add_executed
+export -f execute
 export -f ensure_executed
+export -f user_execute
 
-export DEBIAN_FRONTEND=noninteractive 
+export DEBIAN_FRONTEND=noninteractive
 execute install-pre
 
 for app in $apps; do

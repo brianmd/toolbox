@@ -27,3 +27,7 @@ apt-get install -y \
   wget \
   zlib1g-dev
 # httpie
+# munin
+# monit
+# gdebi
+# exim4
