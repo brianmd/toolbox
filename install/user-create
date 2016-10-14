@@ -1,5 +1,5 @@
 #!/bin/bash
-USERNAME=${USERNAME:-toolbox}
+USERNAME=${UNAME:-toolbox}
 USERID=1000
 PW=${USERNAME}pw
 USERDIR=/home/${USERNAME}

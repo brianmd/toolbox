@@ -2,5 +2,6 @@ install/installed_apps
 install/attempted_apps
 install/executed_apps
 .#*
+#*
 .envrc
 

@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# usage: $0 username actions
+# example: sudo ./install-user clojure create dotfiles spacemacs
+
+usage="Usage: $0 username [create|create-id] [actions ...]"
+# if [ "$#" == "0" ]; then
+if [ "$#" -lt 2 ]; then
+  echo $usage
+  exit 1
+fi
+
+# export UNAME=root
+export UNAME=$1
+shift
+
+if [[ $1 == create ]]; then
+    echo "creating user $UNAME"
+    grep "^$UNAME" /etc/passwd
+    if [ $? -ne 0 ]; then
+        echo "no"
+    else
+        echo "user $UNAME already exists"
+    fi
+    shift
+fi
+
+
+
+# Note: if certain user has been created, homedir is:
+#       grep "^$UNAME" /etc/passwd | cut -d: -f 6
+# if [[ $UNAME -eq "root"]]; then
+#   export HOMEDIR="/root"
+# else
+#   export HOMEDIR="/home/$UNAME"
+# fi
+HOMEDIR=`grep "^$UNAME" /etc/passwd | cut -d: -f 6`
+if [[ -z $HOMEDIR ]]; then
+    echo "user $UNAME does not have a home directory."
+    exit 2
+fi
+
+echo "user: $UNAME, homedir: $HOMEDIR"
+
+
+# apps=${@:-"apt-update apt-upgrade utils zsh dotfiles tmux direnv firewall gcloud user-create spacemacs spacemacs-setup apt-cleanup"}
+apps=$@
+
+
+echo "installing $apps"
+echo
+exit 5
+
+source helpers/functions
+
+export -f add_attempted
+export -f add_executed
+export -f has_executed
+export -f add_app
+export -f add_user_app
+export -f add_executed
+export -f execute
+export -f ensure_executed
+export -f user_execute
+
+execute user-install-pre
+
+for app in $apps; do
+  user_execute "app-pre" || true
+done
+
+for app in $apps; do
+  user_execute "app" || true
+  add_user_app $app
+done
+
+for app in $apps; do
+  user_execute "app-post" || true
+done
+
+execute user-install-post
