@@ -5,7 +5,7 @@ cd $HOMEDIR/.nodenv && src/configure && make -C src
 git clone https://github.com/nodenv/node-build.git $(nodenv root)/plugins/node-build
 # $HOMEDIR/.nodenv/bin/nodenv install v4.2.2
 # $HOMEDIR/.nodenv/bin/nodenv rehash
-nodenv install 6.5.0
+nodenv install 6.9.1
 nodenv rehash
-nodenv global 6.5.0
+nodenv global 6.9.1
 
