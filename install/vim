@@ -1,8 +1,8 @@
 #!/bin/bash
-mkdir -p $HOMEDIR/.config/dotfiles/vim/bundle
-mkdir -p $HOMEDIR/.config/dotfiles/vim/swap
-mkdir -p $HOMEDIR/.config/dotfiles/vim/undo
-touch $HOMEDIR/.config/dotfiles/vim/vimrc.mine
-touch $HOMEDIR/.config/dotfiles/vim/gvimrc.mine
-git clone https://github.com/VundleVim/Vundle.vim.git $HOMEDIR/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
+# mkdir -p $HOMEDIR/.config/dotfiles/vim/bundle
+# mkdir -p $HOMEDIR/.config/dotfiles/vim/swap
+# mkdir -p $HOMEDIR/.config/dotfiles/vim/undo
+# touch $HOMEDIR/.config/dotfiles/vim/vimrc.mine
+# touch $HOMEDIR/.config/dotfiles/vim/gvimrc.mine
+# git clone https://github.com/VundleVim/Vundle.vim.git $HOMEDIR/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
 
