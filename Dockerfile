@@ -37,6 +37,9 @@ RUN cd /root/code/toolbox && git pull
 # RUN /root/code/toolbox/install/install direnv
 
 RUN /root/code/toolbox/install/install java
+
+
+RUN cd /root/code/toolbox && git pull
 RUN /root/code/toolbox/install/install lein
 
 WORKDIR /root

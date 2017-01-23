@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir $HOMEDIR/bin
 cd $HOMEDIR/bin
-wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-chmod +x lein
+# wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+# chmod a+x lein
 
