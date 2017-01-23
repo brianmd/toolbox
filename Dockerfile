@@ -1,31 +1,70 @@
-FROM index.docker.io/clojure:lein-2.6.1
-#FROM index.docker.io/bach/clojure-user
+# This is a development docker container, and thus no attempt
+# is made to keep the size small by cleaning apt caches, etc.
+# These caches are kept intentionally to enable easier updating.
+
+FROM ubuntu:16.04
+
+RUN apt-get update
+RUN apt-get install -y git
+
+RUN mkdir /root/code
+
+RUN git clone https://github.com/brianmd/toolbox.git /root/code/toolbox
+
+#    git clone git@github.com:brianmd/toolbox.git code/tollbox
+
+WORKDIR /root/code/toolbox/install
+
+# RUN /root/code/toolbox/install/install apt-update utils tmux dotfiles direnv spacemacs
+RUN /root/code/toolbox/install/install apt-update
+RUN /root/code/toolbox/install/install utils
+RUN /root/code/toolbox/install/install tmux
+RUN /root/code/toolbox/install/install dotfiles
+RUN /root/code/toolbox/install/install spacemacs
+RUN echo zsh-it
+RUN /root/code/toolbox/install/install zsh
+
+RUN cd /root/.config/dotfiles && git pull
+# RUN apt-get install -y golang direnv
+RUN echo "installing direnv"
+RUN /root/code/toolbox/install/install direnv
+
+RUN /root/code/toolbox/install/install java lein
+
+WORKDIR /root
+CMD ["/bin/zsh"]
 
 
-#####   look at dbus-x11
+
+
+# FROM index.docker.io/clojure:lein-2.6.1
+# #FROM index.docker.io/bach/clojure-user
+
+
+# #####   look at dbus-x11
 
 
 
-# WARNING: pw is lame.
+# # WARNING: pw is lame.
 
-USER root
+# USER root
 
-ENV UNAME toolbox
-ENV PW toolboxpw
-# ENV USERID 64534
-# ENV GIT_KEY git_key
+# ENV UNAME toolbox
+# ENV PW toolboxpw
+# # ENV USERID 64534
+# # ENV GIT_KEY git_key
 
-COPY install /root
-WORKDIR /root/install
-ENV DEBIAN_FRONTEND noninteractive
-RUN install "apt-update zsh"
-# RUN /install/apt-update && \
-#     /install/utils && \
-#     /install/gcloud && \
-#     /install/user-create && \
-#     /install/apt-cleanup
+# COPY install /root
+# WORKDIR /root/install
+# ENV DEBIAN_FRONTEND noninteractive
+# RUN install "apt-update zsh"
+# # RUN /install/apt-update && \
+# #     /install/utils && \
+# #     /install/gcloud && \
+# #     /install/user-create && \
+# #     /install/apt-cleanup
 
-USER $UNAME
+# USER $UNAME
 
 
 # # RUN apt-get clean && \

@@ -1,5 +1,7 @@
 #!/bin/bash
+echo "re-link ~/.zshrc"
 rm -f $HOMEDIR/.zshrc   # if link
 rm -rf $HOMEDIR/.zshrc  # if directory
 ln -s $HOMEDIR/.config/dotfiles/etc/zshrc $HOMEDIR/.zshrc
 export SHELL=/usr/bin/zsh
+chsh $UNAME -s /usr/bin/zsh

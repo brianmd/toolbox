@@ -1,3 +1,2 @@
 #!/bin/bash
-# sudo apt-get install -y golang
-apt-get install -y direnv
+apt-get install -y golang direnv

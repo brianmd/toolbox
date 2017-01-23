@@ -1,4 +1,6 @@
 #!/bin/bash
-mkdir -p $HOMEDIR/.config
-git clone https://github.com/direnv/direnv $HOMEDIR/.config/direnv
-cd $HOMEDIR/.config/direnv && make install
+echo "skipping"
+# this seems to be for macs. Use apt-get
+# mkdir -p $HOMEDIR/.config
+# git clone https://github.com/direnv/direnv $HOMEDIR/.config/direnv
+# cd $HOMEDIR/.config/direnv && make install
