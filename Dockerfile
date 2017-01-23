@@ -39,7 +39,7 @@ RUN cd /root/code/toolbox && git pull
 RUN /root/code/toolbox/install/install java
 
 
-RUN echo 4
+RUN echo 5
 RUN cd /root/code/toolbox && git pull
 RUN /root/code/toolbox/install/install lein
 
