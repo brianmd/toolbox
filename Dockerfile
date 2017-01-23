@@ -39,8 +39,9 @@ RUN cd /root/code/toolbox && git pull
 RUN /root/code/toolbox/install/install java
 
 
+RUN echo 1
 RUN cd /root/code/toolbox && git pull
-RUN /root/code/toolbox/install/install lein
+# RUN /root/code/toolbox/install/install lein
 
 WORKDIR /root
 CMD ["/bin/zsh"]
