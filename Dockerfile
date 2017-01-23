@@ -22,7 +22,7 @@ RUN /root/code/toolbox/install/install apt-update utils tmux dotfiles direnv spa
 # RUN /root/code/toolbox/install/install dotfiles
 # RUN /root/code/toolbox/install/install spacemacs
 # RUN echo zsh-it
-# RUN /root/code/toolbox/install/install zsh
+RUN /root/code/toolbox/install/install zsh
 
 # RUN cd /root/.config/dotfiles && git pull
 # # RUN apt-get install -y golang direnv
@@ -30,13 +30,14 @@ RUN /root/code/toolbox/install/install apt-update utils tmux dotfiles direnv spa
 
 
 
-# RUN cd /root/code/toolbox && git pull
+RUN cd /root/code/toolbox && git pull
 
 
 
 # RUN /root/code/toolbox/install/install direnv
 
-# RUN /root/code/toolbox/install/install java lein
+RUN /root/code/toolbox/install/install java
+RUN /root/code/toolbox/install/install lein
 
 WORKDIR /root
 CMD ["/bin/zsh"]
