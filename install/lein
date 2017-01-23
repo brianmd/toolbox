@@ -3,6 +3,8 @@ echo "mkdir $HOMEDIR/bin"
 mkdir $HOMEDIR/bin
 cd $HOMEDIR/bin
 wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-# chmod a+x lein
+pwd
+ls -la
+chmod a+x lein
 echo "done installing lein"
 
