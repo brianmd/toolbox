@@ -1,6 +1,5 @@
 #!/bin/bash
-echo "skipping"
-# this seems to be for macs. Use apt-get
+# this seems to be for macs. Use apt-get instead.
 # mkdir -p $HOMEDIR/.config
 # git clone https://github.com/direnv/direnv $HOMEDIR/.config/direnv
 # cd $HOMEDIR/.config/direnv && make install

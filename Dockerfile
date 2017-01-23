@@ -7,7 +7,7 @@ FROM ubuntu:16.04
 RUN apt-get update
 RUN apt-get install -y git
 
-RUN mkdir /root/code
+# RUN mkdir /root/code
 
 RUN git clone https://github.com/brianmd/toolbox.git /root/code/toolbox
 
@@ -15,21 +15,28 @@ RUN git clone https://github.com/brianmd/toolbox.git /root/code/toolbox
 
 WORKDIR /root/code/toolbox/install
 
-# RUN /root/code/toolbox/install/install apt-update utils tmux dotfiles direnv spacemacs
-RUN /root/code/toolbox/install/install apt-update
-RUN /root/code/toolbox/install/install utils
-RUN /root/code/toolbox/install/install tmux
-RUN /root/code/toolbox/install/install dotfiles
-RUN /root/code/toolbox/install/install spacemacs
-RUN echo zsh-it
-RUN /root/code/toolbox/install/install zsh
+RUN /root/code/toolbox/install/install apt-update utils tmux dotfiles direnv spacemacs
+# RUN /root/code/toolbox/install/install apt-update
+# RUN /root/code/toolbox/install/install utils
+# RUN /root/code/toolbox/install/install tmux
+# RUN /root/code/toolbox/install/install dotfiles
+# RUN /root/code/toolbox/install/install spacemacs
+# RUN echo zsh-it
+# RUN /root/code/toolbox/install/install zsh
 
-RUN cd /root/.config/dotfiles && git pull
-# RUN apt-get install -y golang direnv
-RUN echo "installing direnv"
-RUN /root/code/toolbox/install/install direnv
+# RUN cd /root/.config/dotfiles && git pull
+# # RUN apt-get install -y golang direnv
+# RUN echo "installing direnv"
 
-RUN /root/code/toolbox/install/install java lein
+
+
+# RUN cd /root/code/toolbox && git pull
+
+
+
+# RUN /root/code/toolbox/install/install direnv
+
+# RUN /root/code/toolbox/install/install java lein
 
 WORKDIR /root
 CMD ["/bin/zsh"]
