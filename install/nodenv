@@ -2,7 +2,8 @@
 git clone https://github.com/nodenv/nodenv.git $HOMEDIR/.nodenv
 # This step is optional, but can speed nodenv up.
 cd $HOMEDIR/.nodenv && src/configure && make -C src
-git clone https://github.com/nodenv/node-build.git $(nodenv root)/plugins/node-build
+git clone https://github.com/nodenv/node-build.git $HOMEDIR/.nodenv/plugins/node-build
+# git clone https://github.com/nodenv/node-build.git $(nodenv root)/plugins/node-build
 # $HOMEDIR/.nodenv/bin/nodenv install v4.2.2
 # $HOMEDIR/.nodenv/bin/nodenv rehash
 nodenv install 6.9.1
