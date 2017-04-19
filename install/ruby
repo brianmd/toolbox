@@ -1,8 +1,14 @@
 #!/bin/bash
+
+VERSION=2.4.1
+
 # rbenv
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-grep rbenv $(SHELL_PROFILE) || [ $$? -eq 0 ]
+
+# what does this line do? SHELL_PROFILE doesn't exist.
+#grep rbenv $(SHELL_PROFILE) || [ $$? -eq 0 ]
+
 echo '------------------------------------------------'
 # cat rbenv-sh.txt >> $(SHELL_PROFILE)
 # $(MAKE) install_ruby_build
@@ -13,7 +19,7 @@ git clone git://github.com/nviennot/irb-config.git ~/.irb
 cd ~/.irb && make install
 
 # install ruby version
-curl -sSL http://getrbenv.com/install | bash -s -- --rubies 2.1.5 --global-ruby 2.1.5 --plugins sstephenson/ruby-build,sstephenson/rbenv-gem-rehash
+curl -sSL http://getrbenv.com/install | bash -s -- --rubies $VERSION --global-ruby $VERSION --plugins sstephenson/ruby-build,sstephenson/rbenv-gem-rehash
 #curl -sSL http://getrbenv.com/install | bash -s -- --rubies 2.1.5,2.2.2 --global-ruby 2.2.2 --plugins sstephenson/ruby-build,sstephenson/rbenv-gem-rehash
 # rbenv install --list
 # rbenv install 2.2.3
