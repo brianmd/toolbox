@@ -13,6 +13,7 @@ apt-get install -y \
   ispell \
   jq \
   keychain \
+  mercurial \
   module-init-tools \
   mosh \
   ntpdate \

@@ -4,3 +4,4 @@ dpkg -i chefdk_0.19.6-1_amd64.deb
 echo 'export PATH="/opt/chefdk/embedded/bin:$PATH"' >> $HOME/.bash_profile
 echo 'eval "$(chef shell-init bash)"' >> $HOME/.bash_profile
 source $HOME/.bash_profile
+rm chefdk_0.19.6-1_amd64.deb
