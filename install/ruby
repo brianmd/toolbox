@@ -25,6 +25,7 @@ curl -sSL http://getrbenv.com/install | bash -s -- --rubies $VERSION --global-ru
 # rbenv install 2.2.3
 rbenv rehash
 
+gem install bundler
 
 # NOTE: this has problems, either on linux or mac?
 # rbenv install 2.1.5
