@@ -21,6 +21,7 @@ apt-get install -y \
   python-software-properties \
   silversearcher-ag \
   software-properties-common \
+  sshpass \
   sysstat \
   tmux \
   tree \
