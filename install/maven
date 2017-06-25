@@ -4,7 +4,7 @@ MAVEN_FILENAME=apache-maven-$MAVEN_VERSION-bin.tar.gz
 MAVEN_PATH="/tmp/$MAVEN_FILENAME"
 MAVEN_DEST=/opt/apache-maven-$MAVEN_VERSION
 echo "downloading $MAVEN_FILENAME"
-wget -o $MAVEN_PATH "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/$MAVEN_FILENAME"
+wget -O $MAVEN_PATH "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/$MAVEN_FILENAME"
 echo "516923b3955b6035ba6b0a5b031fbd8b" $MAVEN_PATH | md5sum -c
 
 rm -rf $MAVEN_DEST
